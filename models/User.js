@@ -1,3 +1,4 @@
+// Here I levarage sequelize and take advantage of the Model Construction and use it to make my user.
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
@@ -10,7 +11,7 @@ class User extends Model {
 
 User.init(
     {   
-        id: {
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
              primaryKey: true,
