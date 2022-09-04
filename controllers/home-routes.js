@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
             attributes: ['title', 'content', 'created_at'],
-            include:[{ model: User }]
+            include:[{ model: User }],
         });
         const posts = postData.map(post => post.get({ plain: true}));
         console.log(posts)
@@ -24,5 +24,15 @@ router.get('/signUp', async (req, res) => {
         
     }
 })
+
+router.get('/login', async (req, res) => {
+    try {
+        res.render('login')
+    } catch (error) {
+        res.status(500).json(error)
+        
+    }
+})
+
 
 module.exports = router;
