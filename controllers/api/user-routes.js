@@ -17,6 +17,58 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Creating a post
+router.post('/post', async (req, res) => {
+    try {
+        const postMaker = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.userid
+        })
+        res.status(200).json(postMaker)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+// This is to update the post
+router.put('/:id', async (req, res) => {
+    try {
+        const updatePost = await Post.update(
+            {
+                title: req.body.newTitle,
+                content: req.body.newContent
+            },
+           {
+            where: {
+                post_id : req.body.post_id
+            }
+           } 
+        )
+           console.log(updatePost)
+           res.status(200).json(updatePost);
+    } catch (error) {
+            res.status(500).json(error)
+
+    }
+})
+
+// Delete post
+
+router.delete('/delete', async (req, res) => {
+        try {
+            const deletePost = Post.destroy({
+                where: {
+                    post_id : req.body.post_id
+                }
+            })
+            res.status(200).json(deletePost)
+        } catch (error) {
+            res.status(500).json(error)
+        }
+})
+
+
 //  Creating a User.
 router.post('/', async (req, res) =>{
     try {
@@ -63,6 +115,7 @@ router.post('/login', async (req, res) =>{
     req.session.save(() => {
         req.session.username = dbUserData.username;
         req.session.loggedIn = true ;
+        req.session.userid =  dbUserData.user_id;
 
         console.log(
           '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
@@ -80,8 +133,11 @@ router.post('/login', async (req, res) =>{
     }
 })
 
+
+// logout
 router.post('/logout', (req, res) => {
     if(req.session.loggedIn) {
+        res.render('homepage')
         req.session.destroy(() => {
             res.status(200).end;
         });

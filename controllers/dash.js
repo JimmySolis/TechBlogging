@@ -2,10 +2,13 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth')
 
-router.get('/', async (req, res) => {
+// This displays the dashBoard.
+router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
-            attributes: ['title', 'content', 'created_at'],
+            where:{
+                user_id: req.session.userid
+            },
             attributes: ['post_id', 'title', 'content', 'createdAt'],
             include:[
                 { 
@@ -20,12 +23,12 @@ router.get('/', async (req, res) => {
                  }
                 ],
         });
-        const posts = postData.map(post => post.get({ plain: true}));
-        console.log(posts)
-        res.render('homepage', { 
+        const posts = postData.map(data => data.get({plain:true}))
+        console.log({ posts })
+        res.render('dashboardpage', {
             posts,
-            loggedIn: req.session.loggedIn
-         });
+            loggedIn: req.session.loggedIn,
+        });
     } catch (error) {
         res.status(500).json(error)
     }
@@ -33,36 +36,23 @@ router.get('/', async (req, res) => {
 
 
 
-// This is for the creation of a new post.
-router.get('/post', async (req, res) => {
-    try {
+// This send us to the post page.
+router.get('/:id', async (req, res) => {
+    try{
         if(req.session.loggedIn){
-            res.render('postCreation', { loggedIn: req.session.loggedIn })
+            const getAndRenderPost = await Post.findOne({
+                where: {
+                    post_id : req.params.id
+                },
+                raw: true
+            })
+            console.log({getAndRenderPost});
+            res.render('updatePost', { getAndRenderPost, loggedIn: req.session.loggedIn })
         } else{
             res.render('login')
         }
-        
-    }catch (error){
+    } catch (error){
         res.status(500).json(error)
-    }
-})
-
-
-router.get('/signUp', async (req, res) => {
-    try {
-        res.render('signUp')
-    } catch (error) {
-        res.status(500).json(error)
-        
-    }
-})
-
-router.get('/login', async (req, res) => {
-    try {
-        res.render('login')
-    } catch (error) {
-        res.status(500).json(error)
-        
     }
 })
 

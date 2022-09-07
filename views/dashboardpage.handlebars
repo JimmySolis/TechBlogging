@@ -4,15 +4,22 @@
     {{#each posts as |post|}}
     <section>
         <div class="card">
-           <h3>{{title}}</h3>
+         <a href='/dash/{{post_id}}'><h3>{{title}}</h3></a>
         </div> 
         <div class="card-body">
-           <h5>{{content}}</h5>
+          <h5>{{content}}</h5>
         </div>
         <div>
-          <p class="username-poststamp">  {{createdAt}} </p>
+          <p class="username-poststamp"> {{user.username}} {{formate_date createdAt}} </p>
+        </div>
+        <div>
+          {{comments.comment}}
         </div>
     </section>
     {{/each}}
 
-    <button class="newPost"> 💬 New Post </button>
+    <a href="/post"> <button class="newPost"> 💬 New Post </button> </a>
+
+    
+
+    <script src="/js/update.js"></script>

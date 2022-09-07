@@ -1,0 +1,26 @@
+<div class="nameSiteBorder">
+    <h1 class="nameSite"> DashBoard </h1>
+    </div>
+
+<div class="card"><h2>Post</h2> <p id="postId">{{getAndRenderPost.post_id}}</p></div>
+
+<div class="formDiv">
+     <form class="form update-form" >
+         <label>TITLE</label>
+         <br>
+         <input class="inputBox" id="updatePost-title" value="{{getAndRenderPost.title}}">
+         <br>
+         <label>Content</label>
+       <br>
+         <input  class="inputBox" id="updatePost-content" value="{{getAndRenderPost.content}}">
+         <br>
+         <div class="buttonsForUpandDel">
+         <button class="submit clickForNewPost">UPDATE</button>
+         <button class="bin">🗑</button>
+         </div>
+     </form> 
+ </div>
+ 
+</section>
+<script src="/js/update.js"></script>
+<script src="/js/delete.js"></script>

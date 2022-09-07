@@ -121,3 +121,35 @@ font-size: 25px;
     color: white;
     
 }
+
+.buttonsForUpandDel{
+    display: flex;
+    justify-content: space-evenly;
+}
+.clickForNewPost{
+    width: 100px;
+}
+
+.clickForNewPost:hover{
+    height: 50px;
+    background-color: lightgreen;
+    transition: 3s;
+    border-radius: 20px;
+}
+.bin{
+    width: 100px;
+}
+
+
+.bin:hover{
+    height: 50px;
+    background-color: rgb(242, 63, 63);
+    transition: 3s;
+    border-radius: 20px;
+}
+
+.comButton{
+    background-color: lightgreen;
+    transition: 3s;
+    border-radius: 20px;
+}
