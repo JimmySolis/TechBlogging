@@ -13,7 +13,7 @@ const signupFormHandler = async (event) => {
             });
 
             if( response.ok ){
-                document.location.replace('/');
+                document.location.replace('/dash');
             } else {
                 alert(`Failed to sign up.
                        Try a new Username, perhaps it isn't unique.

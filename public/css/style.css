@@ -102,3 +102,22 @@ label{
 color: rgb(133, 133, 243);
 font-size: 25px;
 }
+
+.newPost {
+    color: white;
+    background-color: black;
+    width: 200px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px  rgb(113, 113, 113);
+    display: block;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+
+.comments{
+    color: white;
+    
+}

@@ -12,11 +12,17 @@
     <nav>
         <div class="navigation-bar">
         <a href="/"><h2>homePage</h2></a>
-        <a href="/dashboardpage"><h2>dashBoard</h2></a>
-        <a href="/signUp"><h2>signUp</h2></a>
+        <a href="/dash"><h2>dashBoard</h2></a>
+        {{#if loggedIn}}
+        <a class="logout"><h2>logOut</h2></a>
+        {{else}}
+         <a href="/signUp"><h2>signUp</h2></a>
+        {{/if}}
         </div>
     </nav>
-</header>
+</header>       
 {{{body}}}
+
+<script src="/js/logout.js"></script>
 </body>
 </html>

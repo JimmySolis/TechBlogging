@@ -11,7 +11,7 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 // This is my format for kickoutime: 1sec  60secs 60minutes 2hours  
-const kickOutTime = 1000 * 60 * 60 * 2;
+const kickOutTime = 1000 * 60 * 5;
 
 const sess = {
     secret: process.env.SECRET_SESS,
@@ -19,7 +19,7 @@ const sess = {
         maxAge: kickOutTime
     },
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new SequelizeStore({
         db: sequelize
     })
