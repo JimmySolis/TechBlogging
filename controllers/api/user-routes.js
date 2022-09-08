@@ -32,7 +32,7 @@ router.post('/post', async (req, res) => {
 })
 
 // This is to update the post
-router.put('/:id', async (req, res) => {
+router.put('/update', async (req, res) => {
     try {
         const updatePost = await Post.update(
             {
@@ -78,7 +78,7 @@ router.post('/', async (req, res) =>{
         });
         req.session.save(() => {
             req.session.loggedIn = true;
-            req.session.user_id = newUser.user_id;
+            req.session.userid = newUser.user_id;
             req.session.username = newUser.username;
         // console.log(newUser);
         res.status(200).json(newUser);

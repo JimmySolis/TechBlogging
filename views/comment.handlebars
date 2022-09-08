@@ -1,0 +1,23 @@
+<div class="nameSiteBorder">
+    <h1 class="nameSite"> DashBoard </h1>
+    </div>
+
+<div class="card"><h2>Comment</h2> <p id="postId"></p></div>
+
+<div class="formDiv">
+     <form class="form comment-form" >
+        <p id="post_id"> {{postComment.post_id}}</p>
+        <p> Commenting to : {{postComment.title}} </p>
+        <p>{{ postComment.content}}</p>
+         <label>Comment</label>
+       <br>
+         <input  class="inputBox" id="comment-content" >
+         <br>
+         <div class="buttonsForUpandDel">
+        <button class="submit clickForComment">Comment</button></a>
+         </div>
+     </form> 
+ </div>
+</section>
+
+<script src="/js/comment.js"></script>

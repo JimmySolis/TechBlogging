@@ -9,7 +9,7 @@ const updatePost = async (event) => {
     const post_id = postNumber.innerHTML;
 
     if(newTitle && newContent && post_id){
-        const response = await fetch('api/users/update', {
+        const response = await fetch('/api/users/update', {
             method: 'PUT',
             body: JSON.stringify({newTitle, newContent, post_id}),
             headers: {'Content-type' : 'application/json'}

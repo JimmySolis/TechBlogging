@@ -153,3 +153,7 @@ font-size: 25px;
     transition: 3s;
     border-radius: 20px;
 }
+
+.commentSectionOfPost{
+    color: white;
+}

@@ -12,6 +12,13 @@
     <div>
       <p class="username-poststamp">Post by {{user.username}} on {{formate_date createdAt}}</p>
     </div>
-    <button class="comButton"> Comment 💬 </button>
+
+    <div class="commentSectionOfPost">
+      <h3>Comments:</h3>
+      {{#each comments as |com|}}
+    <p>{{com.comment}} --- {{com.user.username}} </p>
+    {{/each}}
+    </div>
+   <a href="/comment/{{post_id}}"><button class="comButton"> Comment 💬</button></a>
 </section>
 {{/each}}

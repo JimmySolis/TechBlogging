@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth')
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            attributes: ['title', 'content', 'created_at'],
             attributes: ['post_id', 'title', 'content', 'createdAt'],
             include:[
                 { 
