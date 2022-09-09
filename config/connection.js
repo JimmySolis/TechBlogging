@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 //   This will establish that all the needed properites to establish a connection.
-const sequelize = new Sequelize( process.env.MYSQLURI);
+const sequelize = new Sequelize( process.env.JAWSDB_URL || process.env.MYSQLURI);
 // process.env.JAWSDB_URL ||
 
 module.exports = sequelize;
