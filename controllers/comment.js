@@ -3,8 +3,8 @@ const { User, Post, Comment } = require('../models');
 
 
 router.get('/:id', async (req, res) => {
+    if(req.session.loggedIn){
         try {
-            if(req.session.loggedIn){
             const postComment = await Post.findOne({
                 where:{
                     post_id: req.params.id
@@ -13,12 +13,12 @@ router.get('/:id', async (req, res) => {
                 raw: true
             });
             // console.log(postComment)
-            res.render('comment', { postComment, loggedIn: req.session.loggedIn })
-        } else {
-            res.render('signup')
-        }
+            res.render('comment', { postComment, loggedIn: req.session.loggedIn, commentUser: req.session.user_id })
         } catch (error) {
             res.status(500).json(error);
+        }
+    } else {
+            res.render('signup')
         }
 
 } )

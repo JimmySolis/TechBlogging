@@ -38,8 +38,8 @@ router.get('/', withAuth, async (req, res) => {
 
 // This send us to the post page.
 router.get('/:id', async (req, res) => {
-    try{
-        if(req.session.loggedIn){
+    if(req.session.loggedIn){
+        try{
             const getAndRenderPost = await Post.findOne({
                 where: {
                     post_id : req.params.id
@@ -48,12 +48,13 @@ router.get('/:id', async (req, res) => {
             })
             // console.log({getAndRenderPost});
             res.render('updatePost', { getAndRenderPost, loggedIn: req.session.loggedIn })
-        } else{
-            res.render('login')
-        }
+       
     } catch (error){
         res.status(500).json(error)
     }
+        } else{
+          res.render('login')
+        }
 })
 
 
