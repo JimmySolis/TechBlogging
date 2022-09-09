@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
         if(response.ok) {
             document.location.replace(`/dash`);
         } else {
-            alert('Failed to log in.')
+            alert('Failed to log in. Do you have an account? If not click Sign-up')
         }
     }
 }

@@ -12,7 +12,7 @@ router.get('/:id', async (req, res) => {
                 attributes: ['post_id', 'title', 'content'],
                 raw: true
             });
-            console.log(postComment)
+            // console.log(postComment)
             res.render('comment', { postComment, loggedIn: req.session.loggedIn })
         } else {
             res.render('signup')

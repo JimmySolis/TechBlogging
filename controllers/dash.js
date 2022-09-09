@@ -24,7 +24,7 @@ router.get('/', withAuth, async (req, res) => {
                 ],
         });
         const posts = postData.map(data => data.get({plain:true}))
-        console.log({ posts })
+        // console.log({ posts })
         res.render('dashboardpage', {
             posts,
             loggedIn: req.session.loggedIn,
@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
                 },
                 raw: true
             })
-            console.log({getAndRenderPost});
+            // console.log({getAndRenderPost});
             res.render('updatePost', { getAndRenderPost, loggedIn: req.session.loggedIn })
         } else{
             res.render('login')

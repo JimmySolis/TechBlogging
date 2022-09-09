@@ -1,7 +1,7 @@
-
 body{
     margin: 0px;
 }
+
 a {
     text-decoration: none;
     color: lightgreen;
@@ -68,6 +68,7 @@ section{
 .formDiv{
     background-color: white;
 }
+
 .form{
     display: grid;
   
@@ -136,6 +137,7 @@ font-size: 25px;
     transition: 3s;
     border-radius: 20px;
 }
+
 .bin{
     width: 100px;
 }

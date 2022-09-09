@@ -45,7 +45,7 @@ router.put('/update', async (req, res) => {
             }
            } 
         )
-           console.log(updatePost)
+        //    console.log(updatePost)
            res.status(200).json(updatePost);
     } catch (error) {
             res.status(500).json(error)
@@ -54,7 +54,6 @@ router.put('/update', async (req, res) => {
 })
 
 // Delete post
-
 router.delete('/delete', async (req, res) => {
         try {
             const deletePost = Post.destroy({
@@ -113,14 +112,14 @@ router.post('/login', async (req, res) =>{
             return;
         }
     req.session.save(() => {
-        req.session.username = dbUserData.username;
         req.session.loggedIn = true ;
         req.session.userid =  dbUserData.user_id;
+        req.session.username = dbUserData.username;
 
-        console.log(
-          '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-          req.session.cookie
-        );
+        // console.log(
+        //   '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+        //   req.session.cookie
+        // );
 
         res
         .status(200)
